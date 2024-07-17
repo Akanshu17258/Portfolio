@@ -25,8 +25,8 @@ export class HeaderComponent {
 
 
   animationImages = [
-    '../../assets/img/icons/burgermenu1.svg',
-    '../../assets/img/icons/burgermenu4.svg',
+    'assets/img/icons/burgermenu1.svg',
+    'assets/img/icons/burgermenu4.svg',
   ];
 
 
