@@ -1,0 +1,161 @@
+#about-me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  gap: 100px;
+  z-index: 3;
+  overflow: hidden;
+}
+#shape2 {
+  top: -141px;
+  position: absolute;
+  right: -483px;
+  transform: scaleX(-1) scaleY(-1) rotate(150deg);
+  transform: scale(0.6);
+}
+
+#about-me-container {
+  width: var(--mainMargin);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+
+  & h1 {
+    font-size: 90px;
+  }
+}
+
+#about-me-text-container {
+  text-align: justify;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  & img {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+  }
+  & h2 {
+    font-size: 90px;
+  }
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+#circle-pic-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+
+.green-circle {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 360px;
+  border: 4px solid var(--green);
+  outline: 2px;
+  overflow: hidden;
+  z-index: 2;
+  & img {
+    position: absolute;
+    top: -4px;
+    left: -40px;
+    z-index: 1;
+    width: 600px;
+  }
+}
+
+#about-me-line {
+  //   position: absolute;
+  top: 50%;
+  right: -52%;
+
+  width: 267px;
+  height: 4px;
+  background-color: var(--green);
+  z-index: 2;
+}
+
+@media (max-width: 1850px) {
+  #about-me-container {
+    margin-top: 100px;
+  }
+  #circle-pic-container {
+    right: -100px;
+  }
+}
+@media (max-width: 1650px) {
+}
+@media (max-width: 1500px) {
+  #about-me-container {
+    align-items: center;
+  }
+  .green-circle {
+    width: 350px;
+    height: 350px;
+    & img {
+      top: 0px;
+      left: 0px;
+      width: 350px;
+    }
+  }
+
+  #about-me-text-container {
+    & img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .text-container {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1333px) {
+  #about-me-text-container {
+    width: 60%;
+  }
+
+  #circle-pic-container {
+    right: -200px;
+  }
+}
+@media (max-width: 1160px) {
+  #circle-pic-container {
+    right: -250px;
+  }
+}
+@media (max-width: 1060px) {
+  #about-me-container {
+    margin-top: 0;
+    justify-content: center;
+    width: 100%;
+  }
+  #about-me-text-container {
+    width: 80%;
+    z-index: 3;
+  }
+  #circle-pic-container {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  #about-me-text-container {
+    & h2 {
+      margin-top: 70px;
+      margin-bottom: 16px;
+      font-size: 45px;
+    }
+  }
+}
+

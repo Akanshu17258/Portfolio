@@ -1,0 +1,163 @@
+<section id="contact" #contact>
+  <div id="contact-container">
+    <div class="small-line-contact"></div>
+
+    <h2>Contact</h2>
+    <div data-aos="fade-up" data-aos-delay="200" id="form-container">
+      <div class="text-container">
+        <h3>Got a problem to solve?</h3>
+        <p>
+          Contact me through this form. I am interested in hearing you, knowing
+          your ideas and contributing to your projects with my work.
+        </p>
+        <p>Need a Frontend developer? <b>Contact me!</b></p>
+      </div>
+
+      <form
+        (submit)="sendMail()"
+        ngNativeValidate
+        #myForm="ngForm"
+        (click)="activateValidation()"
+      >
+        <div class="input-container">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+            #nameField="ngModel"
+            [(ngModel)]="formData.name"
+            [ngClass]="{
+              invalid: !fieldStatus.name && formActive,
+              valid: fieldStatus.name
+            }"
+            (ngModelChange)="
+              fieldStatus.name = nameField.valid && nameField.value.length > 2;
+              updateAllFieldsValid()
+            "
+          />
+          <img
+            *ngIf="fieldStatus.name"
+            src="../../assets/img/icons/Frame.svg"
+          />
+          <img
+            *ngIf="!fieldStatus.name && formActive"
+            src="../../assets/img/icons/invaild.svg"
+          />
+        </div>
+
+        <div class="input-container">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your email"
+            #emailField="ngModel"
+            required
+            [(ngModel)]="formData.email"
+            [pattern]="emailRegex"
+            [ngClass]="{
+              invalid: !fieldStatus.email && formActive,
+              valid: fieldStatus.email
+            }"
+            (ngModelChange)="
+              fieldStatus.email =
+                emailField.valid && emailField.value.length > 1;
+              updateAllFieldsValid()
+            "
+          />
+
+          @if(fieldStatus.email){
+          <img
+            src="../../assets/img/icons/Frame.svg"
+          />
+        }
+
+          <img
+            *ngIf="!fieldStatus.email && formActive"
+            src="../../assets/img/icons/invaild.svg"
+          />
+        </div>
+
+        <div class="input-container">
+          <textarea
+            type="text"
+            name="message"
+            placeholder="Your message"
+            #messageField="ngModel"
+            required
+            [(ngModel)]="formData.message"
+            [ngClass]="{
+              invalid: !fieldStatus.message && formActive,
+              valid: fieldStatus.message
+            }"
+            (ngModelChange)="
+              fieldStatus.message =
+                messageField.valid && messageField.value.length > 5;
+              updateAllFieldsValid()
+            "
+          ></textarea>
+          <img
+            *ngIf="fieldStatus.message"
+            src="../../assets/img/icons/Frame.svg"
+          />
+          <img
+            *ngIf="!fieldStatus.message && formActive"
+            src="../../assets/img/icons/invaild.svg"
+          />
+        </div>
+        <div class="input-container">
+          <div id="checkbox-container">
+            <input
+              required
+              type="checkbox"
+              name="privacy policy"
+              id="policy"
+              #policyField="ngModel"
+              [(ngModel)]="formData.privacyPolicy"
+              (ngModelChange)="
+                fieldStatus.privacyPolicy = policyField.valid;
+                updateAllFieldsValid()
+              "
+            />
+            <div>
+              <p>
+                I've read the
+                <a class="policy-link" href="">privacy policy</a> and agree to
+                the processing of my data as outlined.
+              </p>
+
+              <p
+                *ngIf="!fieldStatus.privacyPolicy && formActive"
+                class="accept"
+              >
+                Please accept the privacy policy.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="button-grey"
+          type="submit"
+          [disabled]="!fieldStatus.allFieldsValid"
+          [ngClass]="{
+            'button-valid': fieldStatus.allFieldsValid,
+            'button-grey': !fieldStatus.allFieldsValid
+          }"
+        >
+          Send message :)
+        </button>
+      </form>
+      <img
+        onclick="window.location.href='#'"
+        class="pageUp"
+        src="../../assets/img/icons/Go up button.svg"
+        alt="Up Page Arrow"
+      />
+    </div>
+    <div id="messageSent" *ngIf="messageSent" class="confirmation-message">
+      Message has been sent successfully!
+    </div>
+  </div>
+</section>
